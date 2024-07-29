@@ -1,8 +1,7 @@
-/* QuoteForm.module.css */
 .quoteForm {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px; /* Espacio entre las columnas */
+  gap: 24px;
   max-width: 800px;
   margin: auto;
   padding: 20px;
@@ -29,66 +28,58 @@
   font-size: 16px;
 }
 
-.formConcept {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 32px; /* Espacio entre los campos del concepto */
-  align-items: center;
-}
-
-.formConcept input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.addButton {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #0070f3;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  grid-column: span 2;
-}
-
-.addButton:hover {
-  background-color: #005bb5;
-}
-
-.removeButton {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #e94e77;
-  color: white;
-  cursor: pointer;
-  margin-left: 8px; /* Ajusta este valor según sea necesario */
-}
-
-.removeButton:hover {
-  background-color: #c53041;
-}
-
-.submitButton {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #0070f3;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  grid-column: span 2;
-}
-
-.submitButton:hover {
-  background-color: #005bb5;
-}
-
-/* Asegúrate de que el formulario y conceptos estén alineados correctamente */
 .formConceptContainer {
   grid-column: span 2;
   display: flex;
   flex-direction: column;
+}
+
+.formConcept {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.formConcept input {
+  margin-bottom: 8px;
+}
+
+.addButton,
+.removeButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addButton:hover,
+.removeButton:hover {
+  background-color: #0056b3;
+}
+
+.submitButton {
+  grid-column: span 2;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #218838;
+}
+
+.formContainer {
+  padding: 20px;
+}
+
+.formContainer h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }

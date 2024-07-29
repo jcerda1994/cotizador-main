@@ -1,7 +1,6 @@
-// QuoteForm.js
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "../styles/QuoteForm.module.css"; // Adjust the path if necessary
+import styles from "../styles/QuoteForm.module.css"; // Ajusta la ruta si es necesario
 
 const QuoteForm = () => {
   const router = useRouter();
@@ -21,6 +20,30 @@ const QuoteForm = () => {
     containerType: "",
     serviceConcepts: [],
   });
+
+  const calculateTotalCost = (data) => {
+    let totalCost = 0;
+
+    // Costos por tipo de contenedor
+    if (data.containerType === "caja") totalCost += 500;
+    if (data.containerType === "contenedor") totalCost += 5000;
+
+    // Costos por peso
+    if (data.weight > 1000) totalCost += 1000;
+    else totalCost += 500;
+
+    // Costos por tipo de servicio
+    if (data.serviceType === "aereo") totalCost += 2000;
+    if (data.serviceType === "terrestre") totalCost += 1000;
+    if (data.serviceType === "maritimo") totalCost += 500;
+
+    // Agrega cualquier costo adicional de los conceptos de servicio
+    data.serviceConcepts.forEach((concept) => {
+      totalCost += parseFloat(concept.cost || 0);
+    });
+
+    return totalCost;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,17 +80,18 @@ const QuoteForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const totalCost = calculateTotalCost(quoteData);
     try {
       const response = await fetch("/api/save-quote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(quoteData),
+        body: JSON.stringify({ ...quoteData, totalCost }),
       });
 
       if (!response.ok) {
-        const errorText = await response.text(); // Capture the error response
+        const errorText = await response.text(); // Captura el mensaje de error
         throw new Error(`Network response was not ok: ${errorText}`);
       }
 
@@ -256,9 +280,10 @@ const QuoteForm = () => {
             className={styles.addButton}
             onClick={handleAddConcept}
           >
-            Añadir Concepto
+            Agregar Concepto
           </button>
         </div>
+
         <button type="submit" className={styles.submitButton}>
           Obtener Cotización
         </button>

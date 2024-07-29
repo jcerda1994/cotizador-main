@@ -1,40 +1,21 @@
-import { MongoClient, ObjectId } from "mongodb";
+// api/save-quote/route.js
+import clientPromise from "../../../lib/mongodb";
+import { ObjectId } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
-
-const calculateCost = (quoteData) => {
-  const { containerType, weight, serviceType } = quoteData;
-  let cost = 2000;
-
-  cost += containerType === "contenedor" ? 5000 : 500;
-  cost += weight > 1000 ? 1000 : 500;
-  if (serviceType === "aereo") cost += 2000;
-  else if (serviceType === "terrestre") cost += 1000;
-  else if (serviceType === "maritimo") cost += 500;
-
-  return cost;
-};
-
-export async function POST(req) {
+// Handle POST request to save a new quote
+export async function POST(request) {
   try {
-    await client.connect();
-    const database = client.db("cotizador");
-    const collection = database.collection("quotes");
+    const client = await clientPromise;
+    const db = client.db();
+    const collection = db.collection("quotes");
 
-    // Asegúrate de que req.json() esté recibiendo datos correctamente
-    const quoteData = await req.json();
+    const quoteData = await request.json();
 
-    // Agrega un console.log para verificar el contenido de quoteData
-    console.log("Received quote data:", quoteData);
-
-    const totalCost = calculateCost(quoteData);
-
-    const result = await collection.insertOne({ ...quoteData, totalCost });
+    const result = await collection.insertOne(quoteData);
 
     return new Response(
       JSON.stringify({ success: true, id: result.insertedId }),
-      { status: 200 }
+      { status: 201 }
     );
   } catch (error) {
     console.error("Error saving quote:", error);
@@ -42,7 +23,5 @@ export async function POST(req) {
       JSON.stringify({ success: false, message: error.message }),
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

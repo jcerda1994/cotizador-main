@@ -1,51 +1,56 @@
+// components/Dashboard.jsx
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // Importa useRouter
-import styles from "../styles/Dashboard.module.css"; // Asegúrate de crear un archivo CSS correspondiente
+import styles from "../styles/Dashboard.module.css";
 
 const Dashboard = () => {
   const [quotes, setQuotes] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const router = useRouter(); // Crea una instancia de useRouter
 
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
         const response = await fetch("/api/get-all-quotes");
-        if (!response.ok) {
-          throw new Error("Network response was not ok.");
-        }
-        const result = await response.json();
-        if (result.success) {
-          setQuotes(result.data);
+        const data = await response.json();
+        if (data.success) {
+          setQuotes(data.data);
         } else {
-          setError(result.message || "Error fetching quotes.");
+          setError(data.message);
         }
       } catch (error) {
-        console.error("Error fetching quotes:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        setError("Error fetching quotes.");
       }
     };
 
     fetchQuotes();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div className={styles.error}>Error: {error}</div>;
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!quotes.length) {
+    return <div>No quotes available.</div>;
+  }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Dashboard de Cotizaciones</h1>
+    <div className={styles.dashboard}>
+      <h1>Dashboard</h1>
       <table className={styles.table}>
         <thead>
           <tr>
             <th>ID</th>
             <th>Tipo de Servicio</th>
-            <th>Cliente</th>
+            <th>Número de Horas</th>
             <th>Origen</th>
             <th>Destino</th>
+            <th>Cliente</th>
+            <th>Proveedor</th>
+            <th>Dirección de Recolección</th>
+            <th>Dirección de Entrega</th>
+            <th>Detalles de Carga</th>
+            <th>Peso</th>
+            <th>CBM</th>
+            <th>Tipo de Contenedor</th>
             <th>Costo Total</th>
           </tr>
         </thead>
@@ -54,20 +59,22 @@ const Dashboard = () => {
             <tr key={quote._id}>
               <td>{quote._id}</td>
               <td>{quote.serviceType}</td>
-              <td>{quote.client}</td>
+              <td>{quote.hours}</td>
               <td>{quote.origin}</td>
               <td>{quote.destination}</td>
-              <td>{quote.totalCost}</td>
+              <td>{quote.client}</td>
+              <td>{quote.executive}</td>
+              <td>{quote.pickupAddress}</td>
+              <td>{quote.deliveryAddress}</td>
+              <td>{quote.loadDetails}</td>
+              <td>{quote.weight}</td>
+              <td>{quote.cbm}</td>
+              <td>{quote.containerType}</td>
+              <td>${quote.totalCost}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button
-        onClick={() => router.push("/quote")}
-        className={styles.newQuoteButton} // Clase CSS para el botón
-      >
-        Hacer una nueva cotización
-      </button>
     </div>
   );
 };

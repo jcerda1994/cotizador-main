@@ -1,0 +1,128 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./app/styles/Dashboard.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/* styles/Dashboard.module.css */
+.Dashboard_container__zuc8l {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.Dashboard_title__uNZVE {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.Dashboard_table__bdirt {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Dashboard_table__bdirt th,
+.Dashboard_table__bdirt td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.Dashboard_table__bdirt th {
+  background-color: #f4f4f4;
+}
+
+.Dashboard_error__Hfiww {
+  color: red;
+  font-weight: bold;
+}
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./app/styles/QuoteForm.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+.QuoteForm_quoteForm__AbbU9 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.QuoteForm_formGroup__32IUM {
+  display: flex;
+  flex-direction: column;
+}
+
+.QuoteForm_formGroup__32IUM label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.QuoteForm_formGroup__32IUM input,
+.QuoteForm_formGroup__32IUM select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.QuoteForm_formConceptContainer__1fuEq {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.QuoteForm_formConcept__OrfyS {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.QuoteForm_formConcept__OrfyS input {
+  margin-bottom: 8px;
+}
+
+.QuoteForm_addButton___ODko,
+.QuoteForm_removeButton__27P_j {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.QuoteForm_addButton___ODko:hover,
+.QuoteForm_removeButton__27P_j:hover {
+  background-color: #0056b3;
+}
+
+.QuoteForm_submitButton__ilLbY {
+  grid-column: span 2;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.QuoteForm_submitButton__ilLbY:hover {
+  background-color: #218838;
+}
+
+.QuoteForm_formContainer__IDuEc {
+  padding: 20px;
+}
+
+.QuoteForm_formContainer__IDuEc h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+

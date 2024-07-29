@@ -1,50 +1,40 @@
-import { MongoClient, ObjectId } from "mongodb";
+// api/get-quote/route.js
+import clientPromise from "../../../lib/mongodb";
+import { ObjectId } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
-
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
+// Handle GET request to retrieve a specific quote by ID
+export async function GET(request) {
+  const url = new URL(request.url);
+  const id = url.searchParams.get("id");
 
   if (!id) {
     return new Response(
-      JSON.stringify({ success: false, message: "ID is required" }),
+      JSON.stringify({ success: false, message: "ID parameter is required." }),
       { status: 400 }
     );
   }
 
   try {
-    await client.connect();
-    const database = client.db("cotizador");
-    const collection = database.collection("quotes");
-
-    // Validate ObjectId
-    if (!ObjectId.isValid(id)) {
-      return new Response(
-        JSON.stringify({ success: false, message: "Invalid ID format" }),
-        { status: 400 }
-      );
-    }
-
+    const client = await clientPromise;
+    const db = client.db();
+    const collection = db.collection("quotes");
     const quote = await collection.findOne({ _id: new ObjectId(id) });
-    if (quote) {
-      return new Response(JSON.stringify({ success: true, data: quote }), {
-        status: 200,
-      });
-    } else {
+
+    if (!quote) {
       return new Response(
-        JSON.stringify({ success: false, message: "Quote not found" }),
+        JSON.stringify({ success: false, message: "Quote not found." }),
         { status: 404 }
       );
     }
+
+    return new Response(JSON.stringify({ success: true, data: quote }), {
+      status: 200,
+    });
   } catch (error) {
-    console.error("Error getting quote:", error);
+    console.error("Error fetching quote:", error);
     return new Response(
       JSON.stringify({ success: false, message: error.message }),
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }
