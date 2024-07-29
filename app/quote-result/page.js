@@ -56,7 +56,7 @@ const QuoteResult = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Detalles de la Cotización</h1>
+      <h1 className={styles.title}>Detalls de la Cotización</h1>
       <div className={styles.quoteDetails}>
         <p>
           <strong>Tipo de Servicio:</strong> {quote.serviceType}
