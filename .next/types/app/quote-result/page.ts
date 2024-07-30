@@ -1,8 +1,8 @@
-// File: /Users/joseco/Desktop/proyectos/apunto/cotizador-main/app/quote/page.jsx
-import * as entry from '../../../../app/quote/page.js'
+// File: /Users/joseco/Desktop/proyectos/apunto/cotizador-main/app/quote-result/page.jsx
+import * as entry from '../../../../app/quote-result/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../app/quote/page.js')
+type TEntry = typeof import('../../../../app/quote-result/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{

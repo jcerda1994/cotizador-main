@@ -1,6 +1,8 @@
 {
   "/page": "app/page.js",
-  "/api/get-all-quotes/route": "app/api/get-all-quotes/route.js",
+  "/api/save-quote/route": "app/api/save-quote/route.js",
+  "/quote-result/page": "app/quote-result/page.js",
+  "/api/get-quote/route": "app/api/get-quote/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/quote/page": "app/quote/page.js"
+  "/api/get-all-quotes/route": "app/api/get-all-quotes/route.js"
 }
