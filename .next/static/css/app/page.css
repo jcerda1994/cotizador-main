@@ -2,39 +2,90 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./app/styles/Dashboard.module.css ***!
   \***************************************************************************************************************************************************************************************************************************************************************************/
 /* styles/Dashboard.module.css */
-.Dashboard_container__zuc8l {
-  max-width: 900px;
-  margin: auto;
+.Dashboard_dashboard__f7Zlw {
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
 }
 
 .Dashboard_title__uNZVE {
   font-size: 24px;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .Dashboard_table__bdirt {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 .Dashboard_table__bdirt th,
 .Dashboard_table__bdirt td {
-  padding: 10px;
   border: 1px solid #ddd;
+  padding: 12px;
   text-align: left;
 }
 
 .Dashboard_table__bdirt th {
   background-color: #f4f4f4;
+  color: #333;
 }
 
-.Dashboard_error__Hfiww {
-  color: red;
-  font-weight: bold;
+.Dashboard_table__bdirt tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.Dashboard_table__bdirt tr:hover {
+  background-color: #e2e2e2;
+}
+
+.Dashboard_pagination__D_YW2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Dashboard_pageButton__gL982 {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.Dashboard_pageButton__gL982:hover {
+  background-color: #0056b3;
+}
+
+.Dashboard_pageButton__gL982:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+.Dashboard_activePageButton__uB2IW {
+  background-color: #0056b3;
+}
+
+.Dashboard_redirectButton__QFw3i {
+  display: block;
+  width: 100%;
+  max-width: 150px; /* Reduce width to make button smaller */
+  margin: 20px auto;
+  padding: 8px 12px; /* Reduce padding for a smaller button */
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px; /* Reduce font size */
+  text-align: center;
+}
+
+.Dashboard_redirectButton__QFw3i:hover {
+  background-color: #218838;
 }
 
 /*!***************************************************************************************************************************************************************************************************************************************************************************!*\

@@ -11,11 +11,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
-    "/quote-result/page": [
+    "/quote/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/quote-result/page.css",
-      "static/chunks/app/quote-result/page.js"
+      "static/css/app/quote/page.css",
+      "static/chunks/app/quote/page.js"
     ]
   }
 }
