@@ -40,7 +40,7 @@ const QuoteResultPage = () => {
 
   return (
     <div className={styles.quoteResult}>
-      <h1>Resultado de la Cotización</h1>
+      <h1>Resultad de la Cotización</h1>
       <table className={styles.table}>
         <tbody>
           <tr>

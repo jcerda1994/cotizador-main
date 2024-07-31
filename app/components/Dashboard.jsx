@@ -40,7 +40,7 @@ const Dashboard = () => {
           <tr>
             <th>ID</th>
             <th>Tipo de Servicio</th>
-            <th>Número de Horas</th>
+            <th>Tiempo estimado</th>
             <th>Origen</th>
             <th>Destino</th>
             <th>Cliente</th>
