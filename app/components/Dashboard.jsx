@@ -48,7 +48,7 @@ const Dashboard = () => {
             <th>Dirección de Recolección</th>
             <th>Dirección de Entrega</th>
             <th>Detalles de Carga</th>
-            <th>Peso</th>
+            <th>Peso pluma</th>
             <th>CBM</th>
             <th>Tipo de Contenedor</th>
             <th>Costo Total</th>
