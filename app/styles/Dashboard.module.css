@@ -1,35 +1,89 @@
 /* styles/Dashboard.module.css */
-.container {
-  max-width: 900px;
-  margin: auto;
+.dashboard {
+  max-width: 1000px; /* Ampliar un poco el ancho */
+  margin: 20px auto; /* Añadir margen superior e inferior */
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
+  border: 1px solid #e0e0e0; /* Color más suave para el borde */
+  border-radius: 12px; /* Bordes más redondeados */
+  background-color: #ffffff; /* Fondo blanco para más claridad */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para más profundidad */
+  overflow-x: auto; /* Permite el desplazamiento horizontal si la tabla es más ancha que el contenedor */
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 20px; /* Espacio inferior entre la tabla y otros elementos */
+  table-layout: fixed; /* Asegura que la tabla respete el ancho del contenedor */
 }
 
 .table th,
 .table td {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 8px; /* Reducir el relleno para filas más compactas */
+  border: 1px solid #e0e0e0; /* Color de borde más suave */
   text-align: left;
+  word-wrap: break-word; /* Permite que el texto largo se ajuste */
 }
 
 .table th {
-  background-color: #f4f4f4;
+  background-color: #f7f7f7; /* Color de fondo más claro */
+  font-weight: bold; /* Acentuar el texto */
+  border-bottom: 2px solid #ddd; /* Borde inferior más grueso */
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternar colores de fila para mejor lectura */
+}
+
+.table tr:hover {
+  background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
 }
 
 .error {
-  color: red;
+  color: #dc3545; /* Rojo más claro */
   font-weight: bold;
+  margin-bottom: 20px; /* Espacio inferior para separar del contenido */
+}
+
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.pageButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px; /* Reducir el relleno para botones más compactos */
+  margin: 0 5px;
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  font-size: 14px; /* Tamaño de fuente ajustado */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.pageButton:hover {
+  background-color: #0056b3;
+}
+
+.activePage {
+  background-color: #0056b3;
+  font-weight: bold; /* Resaltar el número de página activa */
+}
+
+.newQuoteButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Tamaño del botón ajustado */
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  font-size: 14px; /* Tamaño de fuente ajustado */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.newQuoteButton:hover {
+  background-color: #218838;
 }
