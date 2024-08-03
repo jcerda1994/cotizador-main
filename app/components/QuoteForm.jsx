@@ -18,6 +18,8 @@ const QuoteForm = () => {
     weight: "",
     cbm: "",
     containerType: "",
+    status: "", // Nuevo campo Status
+    margin: "", // Nuevo campo Margen
     serviceConcepts: [],
   });
 
@@ -41,6 +43,10 @@ const QuoteForm = () => {
     data.serviceConcepts.forEach((concept) => {
       totalCost += parseFloat(concept.cost || 0);
     });
+
+    // Aplicar margen
+    const marginMultiplier = 1 + parseFloat(data.margin) / 100;
+    totalCost *= marginMultiplier;
 
     return totalCost;
   };
@@ -110,6 +116,7 @@ const QuoteForm = () => {
     <div className={styles.formContainer}>
       <h1>Cotizador</h1>
       <form className={styles.quoteForm} onSubmit={handleSubmit}>
+        {/* Campos existentes */}
         <div className={styles.formGroup}>
           <label htmlFor="serviceType">Tipo de Servicio</label>
           <select
@@ -195,7 +202,7 @@ const QuoteForm = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="goods">Detalles de Carga</label>
+          <label htmlFor="goods">Detalles de Bienes</label>
           <input
             type="text"
             id="goods"
@@ -247,23 +254,47 @@ const QuoteForm = () => {
             <option value="contenedor">Contenedor</option>
           </select>
         </div>
-
+        {/* Nuevos campos */}
+        <div className={styles.formGroup}>
+          <label htmlFor="status">Status</label>
+          <select
+            id="status"
+            name="status"
+            value={quoteData.status}
+            onChange={handleInputChange}
+          >
+            <option value="">Seleccionar</option>
+            <option value="confirmado">Confirmado</option>
+            <option value="creado">Creado</option>
+            <option value="borrador">Borrador</option>
+          </select>
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="margin">Margen (%)</label>
+          <input
+            type="number"
+            id="margin"
+            name="margin"
+            value={quoteData.margin}
+            onChange={handleInputChange}
+          />
+        </div>
         <div className={styles.formConceptContainer}>
           <h3>Conceptos del Servicio:</h3>
           {quoteData.serviceConcepts.map((concept, index) => (
-            <div key={index} className={styles.formConcept}>
+            <div className={styles.formConcept} key={index}>
               <input
                 type="text"
                 name="concept"
-                value={concept.concept}
                 placeholder="Concepto"
+                value={concept.concept}
                 onChange={(e) => handleConceptChange(index, e)}
               />
               <input
                 type="number"
                 name="cost"
-                value={concept.cost}
                 placeholder="Costo"
+                value={concept.cost}
                 onChange={(e) => handleConceptChange(index, e)}
               />
               <button
@@ -283,9 +314,8 @@ const QuoteForm = () => {
             Agregar Concepto
           </button>
         </div>
-
         <button type="submit" className={styles.submitButton}>
-          Obtener Cotización
+          Calcular Costo Total
         </button>
       </form>
     </div>
