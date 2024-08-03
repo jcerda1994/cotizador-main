@@ -97,7 +97,7 @@ const QuoteResultPage = () => {
           </tr>
         </tbody>
       </table>
-      <button onClick={() => (window.location.href = "/quote")}>
+      <button onClick={() => (window.location.href = "/new-quote")}>
         Volver a Cotizar
       </button>
     </div>
